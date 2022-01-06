@@ -1,0 +1,204 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+h2 {
+    color: #0266A6;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif;
+    opacity: 80%;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.text-grey {
+    display: inline;
+    color: #4E4E4E;
+}
+
+div {
+    display: block;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+
+.pt {
+    padding-top: 8px!important;
+}
+
+.width-2x {
+    width: 160px;
+}
+
+.pl0 {
+    padding-left: 0!important;
+}
+
+.p {
+    padding: 8px!important;
+}
+
+.text-medium {
+    font-weight: 500;
+}
+
+.mb {
+    margin-bottom: 8px!important;
+}
+
+.add-timeslot, .remove-timeslot {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 16px;
+    box-shadow: inset 0 0 0 1px rgb(10 15 20 / 25%);
+    cursor: pointer;
+    color: #8a8a9e;
+} 
+
+.add-timeslot {
+    min-height: 0;
+    min-width: 0;
+    flex-shrink: 0;
+    font-family: Roboto,Helvetica Neue,Trebuchet MS,Segoe,Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+
+.ph {
+    padding-right: 8px!important;
+    padding-left: 8px!important;
+}
+
+.mr- {
+    margin-right: 4px!important;
+}
+
+.mt- {
+    margin-top: 4px!important;
+}
+
+.ml {
+    margin-left: 8px!important;
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+}
+    
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.add-timeslot:hover {
+    background-color: #3c7de6;
+    color: white;
+    box-shadow: none;
+}
+
+.add-timeslot {
+    pointer-events: none;
+}
+
+.remove-timeslot {
+    pointer-events: none;
+}
+
+input {
+    margin: 0 8px 0 0;
+}
+
+.remove-timeslot:hover {
+    background-color: #3c7de6;
+    color: white;
+    box-shadow: none;
+}
+
+.disable-div {
+    pointer-events: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.label {
+    width: 120px;
+}
+
+.sidebar {
+    width: 50%;
+}
+
+body {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flexbox_left {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 25px;
+}
+
+.flexbox_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    border: .5px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+fieldset {
+   margin: -2px; 
+   border-color: #EEEEEE;
+}
+
+.input_box {
+    width: 200px;
+}
+
+#mar {
+    margin-bottom: 8px;
+}
+
+
+
+/* jQuery UI Datepicker moving pixels fix */
+table.ui-datepicker-calendar {border-collapse: separate;}
+.ui-datepicker-calendar td {border: 1px solid transparent;}
+
+/* jQuery UI Datepicker hide datepicker helper */
+#ui-datepicker-div {display:none;}
+
+/* jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+	background: #0266A6 none;
+	color: white;
+}
+
