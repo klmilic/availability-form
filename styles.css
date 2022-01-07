@@ -150,6 +150,8 @@ ul {
 body {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom: 70px;
 }
 
 .flexbox_left {
@@ -187,6 +189,25 @@ fieldset {
     margin-bottom: 8px;
 }
 
+textarea {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+    margin-left: -2px;
+    width: 90px;
+    color: white;
+    background-color: #0266A6;
+    cursor: pointer;
+    border-radius: 4px; 
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    padding: 5px 5px;
+}
 
 
 /* jQuery UI Datepicker moving pixels fix */
