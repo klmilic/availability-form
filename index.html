@@ -4,6 +4,7 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Staff Availability</title>
+	<link rel="icon" type="image/x-icon" href="wave.png">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dubrox/Multiple-Dates-Picker-for-jQuery-UI@master/jquery-ui.multidatespicker.js"></script>
@@ -135,25 +136,25 @@
 	<div class="content">
 		
 		<!--Contact Information-->
-		<form action="confirmation.html">
+		<form id="form" method="POST" action="https://script.google.com/macros/s/AKfycbzKH_9FW5ZsNdgeqtZjilZOoCm8faWs5EzBEjaM3EA81qZNROZGXuasUGz0saC4rakgSQ/exec">
 			<fieldset>
 				<h2>Contact Information</h2>
 
 				<div class="flexbox_left">
 					<div class="label">
-						<label for="name">Name</label>
+						<label for="fname">First Name</label>
 					</div>
 					<div>
-						<input type="text" class="input_box" id="name" name="name" required>
+						<input type="text" class="input_box" id="fname" name="First Name" required>
 					</div>
 				</div>
 
 				<div class="flexbox_left">
 					<div class="label">
-						<label for="mail">Email</label>
+						<label for="lname">Last Name</label>
 					</div>
 					<div>
-						<input type="email" class="input_box" id="mail" name="user_email" required>
+						<input type="text" class="input_box" id="lname" name="Last Name" required>
 					</div>
 				</div>
 
@@ -162,7 +163,16 @@
 						<label for="employee_id">Employee #</label>
 					</div>
 					<div>
-						<input type="text" class="input_box" id="employee_id" name="employee_id" required>
+						<input type="text" class="input_box" id="employee_id" name="Employee #" required>
+					</div>
+				</div>
+
+				<div class="flexbox_left">
+					<div class="label">
+						<label for="mail">Email</label>
+					</div>
+					<div>
+						<input type="email" class="input_box" id="mail" name="Email" required>
 					</div>
 				</div>
 
@@ -171,7 +181,7 @@
 						<label for="phone_number">Phone Number</label>
 					</div>
 					<div>
-						<input type="tel" class="input_box" id="phone_number" name="phone" required>
+						<input type="tel" class="input_box" id="phone_number" name="Phone" required>
 					</div>
 				</div>
 			</fieldset>
@@ -182,7 +192,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="pool_1" name="pool_preference" value="CCAC" required>
+						<input type="radio" id="pool_1" name="Pool Pref" value="CCAC" required>
 					</div>
 					<div>
 						City Centre Aquatic Complex (CCAC)
@@ -191,7 +201,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="pool_2" name="pool_preference" value="PSLC" required>
+						<input type="radio" id="pool_2" name="Pool Pref" value="PSLC" required>
 					</div>
 					<div>
 						Poirier Sport & Leisure Complex (PSLC)
@@ -200,10 +210,10 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="pool_3" name="pool_preference" value="Either" required>
+						<input type="radio" id="pool_3" name="Pool Pref" value="Either" required>
 					</div>
 					<div>
-						<label for="pool_1">Either</label>
+						Either
 					</div>
 				</div>
 			</fieldset>
@@ -212,10 +222,10 @@
 
 			<fieldset>
 				<h2>Extra Qualifications</h2>
-
+				<input type="hidden" id="qualifications" name="Qualifications" value="">
 				<div class="flexbox_left">
 					<div>
-						<input type="checkbox" id="qualification_1" name="qualification" value="LSI" >
+						<input type="checkbox" id="lsi" value="LSI">
 					</div>
 					<div class="inline">
 						Lifesaving Instructor (LSI)
@@ -224,7 +234,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="checkbox" id="qualification_2" name="qualification" value="SAL">
+						<input type="checkbox" id="sal" value="SAL">
 					</div>
 					<div class="inline">
 						Senior Aquatic Leader (SAL)
@@ -236,295 +246,316 @@
 			<fieldset>
 				<h2>Weekly Availability</h2>
 				<h3>Set 1: January 4 to February 6</h3>
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_mon_1')">Monday</div>
-					<div id="timeblocks_mon_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_mon_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_mon_1')">-</div>
+					<div id="set1">
+						<div class="day">
+							<input type="hidden" id="monSet1" name="Mon Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_mon_1')">Monday</div>
+							<div id="timeblocks_mon_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_mon_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_mon_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="tueSet1" name="Tue Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_tue_1')">Tuesday</div>
+							<div id="timeblocks_tue_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_tue_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_tue_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="wedSet1" name="Wed Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_wed_1')">Wednesday</div>
+							<div id="timeblocks_wed_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_wed_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_wed_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="thuSet1" name="Thu Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_thu_1')">Thursday</div>
+							<div id="timeblocks_thu_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_thu_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_thu_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="friSet1" name="Fri Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_fri_1')">Friday</div>
+							<div id="timeblocks_fri_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_fri_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_fri_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="satSet1" name="Sat Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sat_1')">Saturday</div>
+							<div id="timeblocks_sat_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sat_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sat_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
+			
+						<div class="day">
+							<input type="hidden" id="sunSet1" name="Sun Set 1" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sun_1')">Sunday</div>
+							<div id="timeblocks_sun_1">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sun_1')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sun_1')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
 						</div>
 					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
 	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_tue_1')">Tuesday</div>
-					<div id="timeblocks_tue_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_tue_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_tue_1')">-</div>
+				<h3>Set 2: February 7 to March 13</h3>
+					<div id="set2">
+						<input type="hidden" id="monSet2" name="Mon Set 2" value="">
+						<div class="day">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_mon_2')">Monday</div>
+							<div id="timeblocks_mon_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_mon_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_mon_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
 						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_wed_1')">Wednesday</div>
-					<div id="timeblocks_wed_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_wed_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_wed_1')">-</div>
-						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_thu_1')">Thursday</div>
-					<div id="timeblocks_thu_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_thu_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_thu_1')">-</div>
-						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_fri_1')">Friday</div>
-					<div id="timeblocks_fri_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_fri_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_fri_1')">-</div>
-						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sat_1')">Saturday</div>
-					<div id="timeblocks_sat_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sat_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sat_1')">-</div>
-						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-				<div>
-					<div class="flexbox  pt  ">
-					<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sun_1')">Sunday</div>
-					<div id="timeblocks_sun_1">
-						<div class="flexbox  mb timeblock">
-							<input class="time" name="startTime" autocomplete="off" disabled>
-							<div class="text-grey  p">to</div>
-							<input class="time" name="endTime" autocomplete="off" disabled>
-							<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sun_1')">+</div>
-							<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sun_1')">-</div>
-						</div>
-					</div>
-					</div>
-					<hr class="separator-horizontal  mv">
-				</div>
-	
-			<h3>Set 2: February 7 to March 13</h3>
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_mon_2')">Monday</div>
-				<div id="timeblocks_mon_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_mon_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_mon_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_tue_2')">Tuesday</div>
-				<div id="timeblocks_tue_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_tue_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_tue_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
+						<div class="day">
+							<input type="hidden" id="tueSet2" name="Tue Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_tue_2')">Tuesday</div>
+							<div id="timeblocks_tue_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_tue_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_tue_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_wed_2')">Wednesday</div>
-				<div id="timeblocks_wed_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_wed_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_wed_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
+						<div class="day">
+							<input type="hidden" id="wedSet2" name="Wed Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_wed_2')">Wednesday</div>
+							<div id="timeblocks_wed_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_wed_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_wed_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_thu_2')">Thursday</div>
-				<div id="timeblocks_thu_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_thu_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_thu_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
+						<div class="day">
+							<input type="hidden" id="thuSet2" name="Thu Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_thu_2')">Thursday</div>
+							<div id="timeblocks_thu_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_thu_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_thu_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_fri_2')">Friday</div>
-				<div id="timeblocks_fri_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_fri_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_fri_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
+						<div class="day">
+							<input type="hidden" id="friSet2" name="Fri Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_fri_2')">Friday</div>
+							<div id="timeblocks_fri_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_fri_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_fri_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sat_2')">Saturday</div>
-				<div id="timeblocks_sat_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sat_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sat_2')">-</div>
-					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
+						<div class="day">
+							<input type="hidden" id="satSet2" name="Sat Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sat_2')">Saturday</div>
+							<div id="timeblocks_sat_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sat_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sat_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 
-			<div>
-				<div class="flexbox  pt  ">
-				<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sun_2')">Sunday</div>
-				<div id="timeblocks_sun_2">
-					<div class="flexbox  mb timeblock">
-						<input class="time" name="startTime" autocomplete="off" disabled>
-						<div class="text-grey  p">to</div>
-						<input class="time" name="endTime" autocomplete="off" disabled>
-						<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sun_2')">+</div>
-						<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sun_2')">-</div>
+						<div class="day">
+							<input type="hidden" id="sunSet2" name="Sun Set 2" value="">
+							<div class="flexbox  pt  ">
+							<div class="width-2x  p  pl0  text-medium"><input type="checkbox" onchange="disableDiv('timeblocks_sun_2')">Sunday</div>
+							<div id="timeblocks_sun_2">
+								<div class="flexbox  mb timeblock">
+									<input class="time" name="startTime" autocomplete="off" disabled>
+									<div class="text-grey  p">to</div>
+									<input class="time" name="endTime" autocomplete="off" disabled>
+									<div class="mr-  ml  mt-  ph  add-timeslot" onclick="addTimeBlock('timeblocks_sun_2')">+</div>
+									<div class="mh-  mt-  ph  remove-timeslot" onclick="hideTimeBlock('timeblocks_sun_2')">-</div>
+								</div>
+							</div>
+							</div>
+							<hr class="separator-horizontal  mv">
+						</div>
 					</div>
-				</div>
-				</div>
-				<hr class="separator-horizontal  mv">
-			</div>
-		</fieldset>
+			</fieldset>
 
 			<!--Student Shift-->
 			<fieldset>
 				<h2>On which day(s) are you eligible and willing to work a student shift (2-4 hours)?</h2>
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_1" name="student" value="Monday">
+				<input type="hidden" id="student" name="Student" value="">	
+					<div id="studentShifts">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_1" value="Monday">
+							</div>
+							<div>
+								Monday
+							</div>
 						</div>
-						<div>
-							Monday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_2" name="student" value="Tuesday">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_2" value="Tuesday">
+							</div>
+							<div>
+								Tuesday
+							</div>
 						</div>
-						<div>
-							Tuesday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_3" name="student" value="Wednesday">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_3" value="Wednesday">
+							</div>
+							<div>
+								Wednesday
+							</div>
 						</div>
-						<div>
-							Wednesday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_3" name="student" value="Thursday">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_4" value="Thursday">
+							</div>
+							<div>
+								Thursday
+							</div>
 						</div>
-						<div>
-							Thursday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_3" name="student" value="Friday">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_5" value="Friday">
+							</div>
+							<div>
+								Friday
+							</div>
 						</div>
-						<div>
-							Friday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_3" name="student" value="Saturday">
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_6" value="Saturday">
+							</div>
+							<div>
+								Saturday
+							</div>
 						</div>
-						<div>
-							Saturday
-						</div>
-					</div>
 
-					<div class="flexbox_left">
-						<div>
-							<input type="checkbox" id="student_3" name="student" value="Sunday">
-						</div>
-						<div>
-							Sunday
+						<div class="flexbox_left">
+							<div>
+								<input type="checkbox" id="student_7" value="Sunday">
+							</div>
+							<div>
+								Sunday
+							</div>
 						</div>
 					</div>
 				</fieldset>
@@ -535,7 +566,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="0_shift" name="student" value="0" required>
+						<input type="radio" id="0_shift" name="Shifts Requested" value="0" required>
 					</div>
 					<div>
 						0 shifts (pick up only)
@@ -544,7 +575,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="1_shift" name="student" value="1" required>
+						<input type="radio" id="1_shift" name="Shifts Requested" value="1" required>
 					</div>
 					<div>
 						1 shift (4-8 hours)
@@ -553,7 +584,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="2_shift" name="student" value="2" required>
+						<input type="radio" id="2_shift" name="Shifts Requested" value="2" required>
 					</div>
 					<div>
 						2 shifts (8-16 hours)
@@ -562,7 +593,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="3_shift" name="student" value="3" required>
+						<input type="radio" id="3_shift" name="Shifts Requested" value="3" required>
 					</div>
 					<div>
 						3 shifts (12-24 hours)
@@ -571,7 +602,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="4_shift" name="student" value="4" required>
+						<input type="radio" id="4_shift" name="Shifts Requested" value="4" required>
 					</div>
 					<div>
 						4 shifts (16-32 hours)
@@ -580,7 +611,7 @@
 
 				<div class="flexbox_left">
 					<div>
-						<input type="radio" id="5_shift" name="student" value="5" required>
+						<input type="radio" id="5_shift" name="Shifts Requested" value="5" onclick="getStudents()" required>
 					</div>
 					<div>
 						5 shifts (20-40 hours)
@@ -595,7 +626,8 @@
 				<h2>Monthly Availability</h2>
 				<h4>Please indicate on the calendars any days you will be requesting off.</h4>
 				<div class="flexbox_wrap">
-					<div class="calendar" id="jan"></div>
+					<input type="hidden" id="daysOff" name="Days Off" value="">
+					<div class="calendar" name="January" id="jan"></div>
 					<div class="calendar" id="feb"></div>
 					<div class="calendar" id="mar"></div>
 				</div>
@@ -608,73 +640,74 @@
 				<h4>Please check off lesson sets that you are available for without missing the first day or last two days, as requests for those days
 					off will be denied except in extenuating circumstances. A reminder that there are no lessons on statutory holidays.</h4>
 				<h3>PSLC</h3>
+				<input type="hidden" id="lessonSets" name="Lesson Sets">
 				<table id="pslc_lessons">
 					<tr>
-						<th><input type="checkbox" id="pslc_all" name="lesson_set" value="pslc_all" onchange="checkAll('pslc_lessons', 'pslc_all')"></th>
+						<th><input type="checkbox" id="pslc_all" class="lessonSet" value="pslc_all" onchange="checkAll('pslc_lessons', 'pslc_all')"></th>
 						<th>Days</th>
 						<th>Start Date</th>
 						<th>End Date</th>
 						<th>Notes</th>
 					</tr>
 					<tr>
-						<td><input type="checkbox" id="pslc_lesson1" name="lesson_set" value="pslc_lesson1"></td>
+						<td><input type="checkbox" class="lessonSet" value="Mon/Wed Jan 5-Feb 8" onclick="getLessonSets()"></td>
 						<td>Mon/Wed</td>
 						<td>January 5</td>
 						<td>February 2</td>
 						<td>Stat Jan 3</td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" id="pslc_lesson2" name="lesson_set" value="pslc_lesson2"></td>
+						<td><input type="checkbox" class="lessonSet" value="Tue/Thu Jan 4-Feb 3"></td>
 						<td>Tue/Thu</td>
 						<td>January 4</td>
 						<td>February 3</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson3" name="lesson_set" value="pslc_lesson3"></td>
+						<td><input type="checkbox" class="lessonSet" value="Wed/Fri Jan 5-Feb 4"></td>
 						<td>Wed/Fri</td>
 						<td>January 5</td>
 						<td>February 4</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson4" name="lesson_set" value="pslc_lesson4"></td>
+						<td><input type="checkbox" class="lessonSet" value="Mon Only Jan 10-Mar7"></td>
 						<td>Mon Only</td>
 						<td>January 10</td>
 						<td>March 7</td>
 						<td>Stat Feb 21</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson5" name="lesson_set" value="pslc_lesson5"></td>
+						<td><input type="checkbox" class="lessonSet" value="Fri Only Jan 7-Mar11"></td>
 						<td>Fri Only</td>
 						<td>January 7</td>
 						<td>March 11</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson6" name="lesson_set" value="pslc_lesson6"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sat Only Jan 8-Mar 12"></td>
 						<td>Sat Only</td>
 						<td>January 8</td>
 						<td>March 12</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson7" name="lesson_set" value="pslc_lesson7"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sun Only Jan 9-Mar 13"></td>
 						<td>Sun Only</td>
 						<td>January 9</td>
 						<td>March 13</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson8" name="lesson_set" value="pslc_lesson8"></td>
+						<td><input type="checkbox" class="lessonSet" value="Mon/Wed Feb 7-Mar 9"></td>
 						<td>Mon/Wed</td>
 						<td>February 7</td>
 						<td>March 9</td>
 						<td>Stat Feb 21</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson9" name="lesson_set" value="pslc_lesson9"></td>
+						<td><input type="checkbox" class="lessonSet" value="Tue/Thu Feb 8-Mar 10"></td>
 						<td>Tue/Thu</td>
 						<td>February 8</td>
 						<td>March 10</td>					
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="pslc_lesson10" name="lesson_set" value="pslc_lesson10"></td>
+						<td><input type="checkbox" class="lessonSet" value="Wed/Fri Feb 9-Mar 11"></td>
 						<td>Wed/Fri</td>
 						<td>February 9</td>
 						<td>March 11</td>
@@ -684,63 +717,63 @@
 				  <h3>CCAC</h3>
 				<table id="ccac_lessons">
 					<tr>
-						<th><input type="checkbox" id="ccac_all" name="lesson_set" value="ccac_all" onchange="checkAll('ccac_lessons', 'ccac_all')"></th>
+						<th><input type="checkbox" id="ccac_all" class="lessonSet" value="ccac_all" onchange="checkAll('ccac_lessons', 'ccac_all')"></th>
 						<th>Days</th>
 						<th>Start Date</th>
 						<th>End Date</th>
 						<th>Notes</th>
 					</tr>
 					<tr>
-						<td><input type="checkbox" id="ccac_lesson1" name="lesson_set" value="ccac_lesson1"></td>
+						<td><input type="checkbox" class="lessonSet" value="Tue/Thu Jan 4-Feb 3"></td>
 						<td>Tue/Thu</td>
 						<td>January 4</td>
 						<td>February 3</td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" id="ccac_lesson2" name="lesson_set" value="ccac_lesson2"></td>
+						<td><input type="checkbox" class="lessonSet" value="Mon/Wed Jan 5-Feb 2"></td>
 						<td>Mon/Wed</td>
 						<td>January 5</td>
 						<td>February 2</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson3" name="lesson_set" value="ccac_lesson3"></td>
+						<td><input type="checkbox" class="lessonSet" value="Fri Only Jan 7-Mar 11"></td>
 						<td>Fri Only</td>
 						<td>January 7</td>
 						<td>March 11</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson4" name="lesson_set" value="ccac_lesson4"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sat Only Jan 8-Mar 12"></td>
 						<td>Sat Only</td>
 						<td>January 8</td>
 						<td>March 12</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson5" name="lesson_set" value="ccac_lesson5"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sat/Sun Jan 8-Feb 6"></td>
 						<td>Sat/Sun</td>
 						<td>January 8</td>
 						<td>February 6</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson6" name="lesson_set" value="ccac_lesson6"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sun Only Jan 9-Mar 13"></td>
 						<td>Sun Only</td>
 						<td>January 9</td>
 						<td>March 13</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson7" name="lesson_set" value="ccac_lesson7"></td>
+						<td><input type="checkbox" class="lessonSet" value="Mon/Wed Feb 7-Mar 9"></td>
 						<td>Mon/Wed</td>
 						<td>February 7</td>
 						<td>March 9</td>
 						<td>Stat Feb 21</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson8" name="lesson_set" value="ccac_lesson8"></td>
+						<td><input type="checkbox" class="lessonSet" value="Tue/Thu Feb 8-Mar 10"></td>
 						<td>Tue/Thu</td>
 						<td>February 8</td>
 						<td>March 10</td>
 					  </tr>
 					  <tr>
-						<td><input type="checkbox" id="ccac_lesson9" name="lesson_set" value="ccac_lesson9"></td>
+						<td><input type="checkbox" class="lessonSet" value="Sat/Sun Feb 12-Mar 13"></td>
 						<td>Sat/Sun</td>
 						<td>February 12</td>
 						<td>March 13</td>
@@ -750,10 +783,11 @@
 
 			<fieldset>
 				<h2>Comments</h2>
-				<textarea rows="8"></textarea>
+				<input type="hidden" id="comments" name="Comments" value="">
+				<textarea id="textarea" rows="8" value=""></textarea>
 			</fieldset>
 
-			<input type="submit" value="Submit">
+			<input type="submit" value="Submit" onclick="formatValues()">
 		</form>
 	</div>
 	<div class="sidebar"></div>
@@ -765,7 +799,7 @@
 
 		$('#jan').multiDatesPicker({
 			minDate: '2022-01-01',
-			maxDate: '2022-01-31'
+			maxDate: '2022-01-31',
 		});
 
 		$('#feb').multiDatesPicker({
